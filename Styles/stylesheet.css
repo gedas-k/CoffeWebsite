@@ -89,3 +89,34 @@ footer {
 #nav a:hover {
     color: lightblue;
 }
+
+.coffeeTable {
+    width: 750px;
+    height: 250px;
+    margin: 10px 10px 10px 0;
+    border: 3px solid #e3e3e3;
+    border-radius: 10px;
+    -moz-outline-radius: 10px;
+}
+
+.coffeeTable tr th, .coffeeTable tr td {
+    text-align: left;
+    padding: 0 5px 0 5px;
+}
+
+.coffeeTable img {
+    padding: 0 10px 10px 10px;
+    height: 150px;
+    width: 150px;
+}
+
+fieldset .inputField {
+    width: 280px;
+    padding: 4px;
+}
+
+fieldset label {
+    float: left;
+    width: 100px;
+    font-weight: bold;
+}

@@ -14,9 +14,10 @@
             <nav id="navigation">
                 <ul id="nav">
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="#">Coffe</a></li>
+                    <li><a href="Coffee.php">Coffe</a></li>
                     <li><a href="#">Shop</a></li>
                     <li><a href="#">About</a></li>
+                    <li><a href="Managment.php">Managment</a></li>
                 </ul>
             </nav>
 
@@ -29,7 +30,7 @@
             </div>
 
             <footer>
-                <p>All rights reserved</p>
+                <p>All rights reserved <br/> <?php echo date("Y"); ?></p>
             </footer>
         </div>
     </body>
