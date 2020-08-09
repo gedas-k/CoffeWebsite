@@ -110,13 +110,26 @@ footer {
     width: 150px;
 }
 
-fieldset .inputField {
+.inputField {
     width: 280px;
     padding: 4px;
 }
 
-fieldset label {
+label {
     float: left;
     width: 100px;
     font-weight: bold;
+}
+
+.overViewTable {
+    width: 700px;
+}
+
+.overViewTable tr {
+    padding: 4px;
+}
+
+.overViewTable td {
+    padding: 4px;
+    border: 1px solid #e3e3e3;
 }

@@ -36,6 +36,7 @@ class CoffeeModel {
 
         //Get data from database
         while($row = mysqli_fetch_array($result)) {
+            $id = $row[0];
             $name = $row[1];
             $type = $row[2];
             $price = $row[3];
@@ -45,7 +46,7 @@ class CoffeeModel {
             $review = $row[7];
         
             //Create coffee objects and store them in an array
-            $coffee = new CoffeeEntity(-1, $name, $type, $price, $roast, $country, $image, $review);
+            $coffee = new CoffeeEntity($id, $name, $type, $price, $roast, $country, $image, $review);
             array_push($coffeeArray, $coffee);
         }
         //Close connection
@@ -83,8 +84,6 @@ class CoffeeModel {
 
     function InsertCoffee(CoffeeEntity $coffee) {
         $sqli = $this->Connect();
-
-        //$query = "SELECT * FROM coffee WHERE id=2";
 
         $query = sprintf("INSERT INTO coffee
                             (name, type, price, roast, country, image, review)
