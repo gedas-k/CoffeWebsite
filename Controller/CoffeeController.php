@@ -145,7 +145,7 @@ class CoffeeController {
         $price = $_POST["txtPrice"];
         $roast = $_POST["txtRoast"];
         $country = $_POST["txtCountry"];
-        $image = $_POST["ddlImage"];
+        $image = $_FILES["file"]["name"];
         $review = $_POST["txtReview"];
 
         $coffee = new CoffeeEntity(-1, $name, $type, $price, $roast, $country, $image, $review);
