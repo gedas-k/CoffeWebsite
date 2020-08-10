@@ -169,6 +169,7 @@ class CoffeeController {
 
     function DeleteCoffee($id) {
         $coffeeModel = new CoffeeModel();
+        $coffeeModel->DeleteImage($id);
         $coffeeModel->DeleteCoffee($id);
     }
 

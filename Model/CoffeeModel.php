@@ -122,6 +122,14 @@ class CoffeeModel {
         $this->PerformQuery($query, $sqli);
     }
 
+    function DeleteImage($id) {
+        $sqli = $this->Connect();
+        $query = "SELECT image FROM coffee WHERE id=$id";
+        $result = $this->PerformQuery($query, $sqli);
+        $row = mysqli_fetch_array($result);
+        unlink($row[0]);
+    }
+
     function Connect() {
         require 'Credentials.php';
         
@@ -134,8 +142,9 @@ class CoffeeModel {
 
     function PerformQuery($query, $sqli) {
         //Execute query and close connection
-        mysqli_query($sqli, $query) or die(mysqli_error($sqli));
+        $result = mysqli_query($sqli, $query) or die(mysqli_error($sqli));
         mysqli_close($sqli);
+        return $result;
     }
 
 }
