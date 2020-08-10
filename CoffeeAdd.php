@@ -1,6 +1,8 @@
 <?php
 require './Controller/CoffeeController.php';
+require './Controller/UploadController.php';
 $coffeeController = new CoffeeController();
+$uploadController = new UploadController();
 
 if(isset($_GET["update"])) {
     $title = "Update a Coffee";
@@ -42,7 +44,7 @@ if(isset($_GET["update"])) {
 } else {
     $title = "Add a new Coffee";
 
-    $content = "<form action='' method='post'>
+    $content = "<form action='' method='post' enctype='multipart/form-data'>
             <fieldset>
                 <legend>Add a new Coffee</legend>
                 <label for='name'>Name: </label>
@@ -63,10 +65,8 @@ if(isset($_GET["update"])) {
                 <label for='country'>Country: </label>
                 <input type='text' class='inputField' name='txtCountry' /><br/>
 
-                <label for='image'>Image: </label>
-                <select class='inputField' name='ddlImage'>"
-                .$coffeeController->GetImages().
-                "</select></br>
+                <label fro='file'>Image: </label>
+                <input type='file' name='file' id='file'><br/>
 
                 <label for='review'>Review: </label>
                 <textarea cols='70' rows='12' name='txtReview'></textarea></br>
@@ -84,7 +84,20 @@ if (isset($_GET["update"])) {
 } else {
     //Is name is entered
     if(isset($_POST["txtName"])) {
-        $coffeeController->InsertCoffee();
+        $fileType = $_FILES["file"]["type"];
+
+        if ($uploadController->CheckImageType($fileType)) {
+
+                //Check if file exists
+                if (file_exists("Images/Coffee/" . $_FILES["file"]["name"])) {
+                    echo "File already exists";
+                } else {
+                    move_uploaded_file($_FILES["file"]["tmp_name"], "Images/Coffee/" . $_FILES["file"]["name"]);
+                    echo "Upload in " . "Images/Coffee/" . $_FILES["file"]["name"];
+                    
+                    $coffeeController->InsertCoffee();
+                }
+        }
     }
 }
 
